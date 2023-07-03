@@ -4,28 +4,26 @@ import java.util.*;
 
 public class Poker {
 
-    private static final String[] CARD_TYPES = new String[]{"StraightFlush", "FourOfAKind", "FullHouse", "Flush", "Straight", "ThreeOfAKind", "TwoPair", "OnePair", "HighCard"};
-
     public String compareResult(String black, String white) {
         String blackType = Hand.judgeType(black);
         int[] blackNumber = Hand.strNumber(black);
-        int blackIndex = judgeIndex(blackType);
+        int blackIndex = Hand.judgeIndex(blackType);
         int[] blackArraySort = arraySort(blackNumber);
         int[] blackRepeat = noOrRepeatNumber(blackNumber, 0);
         int[] blackNoRepeat = noOrRepeatNumber(blackNumber, 1);
 
         String whiteType = Hand.judgeType(white);
         int[] whiteNumber = Hand.strNumber(white);
-        int whiteIndex = judgeIndex(whiteType);
+        int whiteIndex = Hand.judgeIndex(whiteType);
         int[] whiteArraySort = arraySort(whiteNumber);
         int[] whiteRepeat = noOrRepeatNumber(whiteNumber, 0);
         int[] whiteNoRepeat = noOrRepeatNumber(whiteNumber, 1);
 
         String winResult = "";
         if (blackIndex < whiteIndex) {
-            winResult = "black wins - " + CARD_TYPES[blackIndex];
+            winResult = "black wins - " + Hand.CARD_TYPES[blackIndex];
         } else if (blackIndex > whiteIndex) {
-            winResult = "white wins - " + CARD_TYPES[whiteIndex];
+            winResult = "white wins - " + Hand.CARD_TYPES[whiteIndex];
         } else {
             if (blackIndex == 0) { //同花顺
                 if (blackNumber[0] < whiteNumber[0]) {
@@ -237,16 +235,6 @@ public class Poker {
             reResult[i] = result[result.length - i - 1];
         }
         return reResult;
-    }
-
-    private int judgeIndex(String strType) {
-        int index = -1;
-        for (int i = 0; i < 9; i++) {
-            if (CARD_TYPES[i].equals(strType)) {
-                index = i;
-            }
-        }
-        return index;
     }
 
 }

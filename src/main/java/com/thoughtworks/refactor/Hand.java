@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 public class Hand {
+    static final String[] CARD_TYPES = new String[]{"StraightFlush", "FourOfAKind", "FullHouse", "Flush", "Straight", "ThreeOfAKind", "TwoPair", "OnePair", "HighCard"};
     private String type;
     private String numbers;
     private int index;
@@ -92,6 +93,16 @@ public class Hand {
             }
         }
         return type;
+    }
+
+    static int judgeIndex(String strType) {
+        int index = -1;
+        for (int i = 0; i < 9; i++) {
+            if (CARD_TYPES[i].equals(strType)) {
+                index = i;
+            }
+        }
+        return index;
     }
 
     public String getType() {
