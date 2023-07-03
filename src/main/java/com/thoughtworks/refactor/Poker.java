@@ -29,28 +29,7 @@ public class Poker {
             } else if (blackHand.getIndex() == 5) { //三条
                 winResult = compareThreeOfAKind(blackHand, whiteHand);
             } else if (blackHand.getIndex() == 6) { //两对
-                for (int i = 0; i < 2; i++) {
-                    if (blackHand.getRepeat()[i] < whiteHand.getRepeat()[i]) {
-                        String sig = intNumber(whiteHand.getRepeat()[i]);
-                        winResult = WHITE_WINS_HINTS + sig;
-                        break;
-                    } else if (blackHand.getRepeat()[i] > whiteHand.getRepeat()[i]) {
-                        String sig = intNumber(blackHand.getRepeat()[i]);
-                        winResult = BLACK_WINS_HINTS + sig;
-                        break;
-                    }
-                }
-                if (winResult == "") {
-                    if (blackHand.getNoRepeat()[0] < whiteHand.getNoRepeat()[0]) {
-                        String sig = intNumber(whiteHand.getNoRepeat()[0]);
-                        winResult = WHITE_WINS_HINTS + sig;
-                    } else if (blackHand.getNoRepeat()[0] > whiteHand.getNoRepeat()[0]) {
-                        String sig = intNumber(blackHand.getNoRepeat()[0]);
-                        winResult = BLACK_WINS_HINTS + sig;
-                    } else {
-                        winResult = "tie";
-                    }
-                }
+                winResult = compareTwoPair(blackHand, whiteHand, winResult);
             } else if (blackHand.getIndex() == 7) { //对子
                 if (blackHand.getRepeat()[0] < whiteHand.getRepeat()[0]) {
                     String sig = intNumber(whiteHand.getRepeat()[0]);
@@ -87,6 +66,32 @@ public class Poker {
                         winResult = "tie";
                     }
                 }
+            }
+        }
+        return winResult;
+    }
+
+    private String compareTwoPair(final Hand blackHand, final Hand whiteHand, String winResult) {
+        for (int i = 0; i < 2; i++) {
+            if (blackHand.getRepeat()[i] < whiteHand.getRepeat()[i]) {
+                String sig = intNumber(whiteHand.getRepeat()[i]);
+                winResult = WHITE_WINS_HINTS + sig;
+                break;
+            } else if (blackHand.getRepeat()[i] > whiteHand.getRepeat()[i]) {
+                String sig = intNumber(blackHand.getRepeat()[i]);
+                winResult = BLACK_WINS_HINTS + sig;
+                break;
+            }
+        }
+        if (winResult == "") {
+            if (blackHand.getNoRepeat()[0] < whiteHand.getNoRepeat()[0]) {
+                String sig = intNumber(whiteHand.getNoRepeat()[0]);
+                winResult = WHITE_WINS_HINTS + sig;
+            } else if (blackHand.getNoRepeat()[0] > whiteHand.getNoRepeat()[0]) {
+                String sig = intNumber(blackHand.getNoRepeat()[0]);
+                winResult = BLACK_WINS_HINTS + sig;
+            } else {
+                winResult = "tie";
             }
         }
         return winResult;
