@@ -25,15 +25,7 @@ public class Poker {
             } else if (blackHand.getIndex() == 3) { //同花
                 winResult = compareFlush(blackHand, whiteHand, winResult);
             } else if (blackHand.getIndex() == 4) { //顺子
-                if (blackHand.getNumbers()[0] < whiteHand.getNumbers()[0]) {
-                    String sig = intNumber(whiteHand.getNumbers()[0]);
-                    winResult = WHITE_WINS_HINTS + sig;
-                } else if (blackHand.getNumbers()[0] > whiteHand.getNumbers()[0]) {
-                    String sig = intNumber(blackHand.getNumbers()[0]);
-                    winResult = BLACK_WINS_HINTS + sig;
-                } else {
-                    winResult = "tie";
-                }
+                winResult = compareStraight(blackHand, whiteHand);
             } else if (blackHand.getIndex() == 5) { //三条
                 if (blackHand.getRepeat()[0] < whiteHand.getRepeat()[0]) {
                     String sig = intNumber(whiteHand.getRepeat()[0]);
@@ -102,6 +94,20 @@ public class Poker {
                     }
                 }
             }
+        }
+        return winResult;
+    }
+
+    private String compareStraight(final Hand blackHand, final Hand whiteHand) {
+        String winResult;
+        if (blackHand.getNumbers()[0] < whiteHand.getNumbers()[0]) {
+            String sig = intNumber(whiteHand.getNumbers()[0]);
+            winResult = WHITE_WINS_HINTS + sig;
+        } else if (blackHand.getNumbers()[0] > whiteHand.getNumbers()[0]) {
+            String sig = intNumber(blackHand.getNumbers()[0]);
+            winResult = BLACK_WINS_HINTS + sig;
+        } else {
+            winResult = "tie";
         }
         return winResult;
     }
