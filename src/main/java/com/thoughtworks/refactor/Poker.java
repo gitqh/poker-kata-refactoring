@@ -29,7 +29,7 @@ public class Poker {
             } else if (blackHand.getIndex() == 5) { //三条
                 winResult = compareThreeOfAKind(blackHand, whiteHand);
             } else if (blackHand.getIndex() == 6) { //两对
-                winResult = compareTwoPair(blackHand, whiteHand, winResult);
+                winResult = compareTwoPair(blackHand, whiteHand);
             } else if (blackHand.getIndex() == 7) { //对子
                 winResult = compareOnePair(blackHand, whiteHand, winResult);
             } else { //散牌
@@ -81,7 +81,8 @@ public class Poker {
         return winResult;
     }
 
-    private String compareTwoPair(final Hand blackHand, final Hand whiteHand, String winResult) {
+    private String compareTwoPair(final Hand blackHand, final Hand whiteHand) {
+        String winResult = "";
         for (int i = 0; i < 2; i++) {
             if (blackHand.getRepeat()[i] < whiteHand.getRepeat()[i]) {
                 String sig = intNumber(whiteHand.getRepeat()[i]);
