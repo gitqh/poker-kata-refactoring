@@ -1,7 +1,14 @@
 package com.thoughtworks.refactor;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class Hand {
     static final String[] CARD_TYPES = new String[]{"StraightFlush", "FourOfAKind", "FullHouse", "Flush", "Straight", "ThreeOfAKind", "TwoPair", "OnePair", "HighCard"};
@@ -103,6 +110,31 @@ public class Hand {
             }
         }
         return index;
+    }
+
+    static int[] arraySort(int[] number) {
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for (int i = 0; i < number.length; i++) {
+            if (map.get(number[i]) != null) {
+                map.put(number[i], map.get(number[i]) + 1);
+            } else {
+                map.put(number[i], 1);
+            }
+        }
+        List<Entry<Integer, Integer>> list = new ArrayList<Entry<Integer, Integer>>();
+        list.addAll(map.entrySet());
+        Collections.sort(list, new Comparator<Entry<Integer, Integer>>() {
+            public int compare(Entry<Integer, Integer> arg0, Entry<Integer, Integer> arg1) {
+                return arg1.getValue().compareTo(arg0.getValue());
+            }
+        });
+        int[] arrayresult = new int[list.size()];
+        int i = 0;
+        for (Entry<Integer, Integer> entry : list) {
+            arrayresult[i] = entry.getKey();
+            i++;
+        }
+        return arrayresult;
     }
 
     public String getType() {

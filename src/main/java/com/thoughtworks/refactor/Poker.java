@@ -8,14 +8,14 @@ public class Poker {
         String blackType = Hand.judgeType(black);
         int[] blackNumber = Hand.strNumber(black);
         int blackIndex = Hand.judgeIndex(blackType);
-        int[] blackArraySort = arraySort(blackNumber);
+        int[] blackArraySort = Hand.arraySort(blackNumber);
         int[] blackRepeat = noOrRepeatNumber(blackNumber, 0);
         int[] blackNoRepeat = noOrRepeatNumber(blackNumber, 1);
 
         String whiteType = Hand.judgeType(white);
         int[] whiteNumber = Hand.strNumber(white);
         int whiteIndex = Hand.judgeIndex(whiteType);
-        int[] whiteArraySort = arraySort(whiteNumber);
+        int[] whiteArraySort = Hand.arraySort(whiteNumber);
         int[] whiteRepeat = noOrRepeatNumber(whiteNumber, 0);
         int[] whiteNoRepeat = noOrRepeatNumber(whiteNumber, 1);
 
@@ -150,31 +150,6 @@ public class Poker {
     private String intNumber(int i) {
         String[] strNumber = {"2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"};
         return strNumber[i - 2];
-    }
-
-    private int[] arraySort(int[] number) {
-        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-        for (int i = 0; i < number.length; i++) {
-            if (map.get(number[i]) != null) {
-                map.put(number[i], map.get(number[i]) + 1);
-            } else {
-                map.put(number[i], 1);
-            }
-        }
-        List<Map.Entry<Integer, Integer>> list = new ArrayList<Map.Entry<Integer, Integer>>();
-        list.addAll(map.entrySet());
-        Collections.sort(list, new Comparator<Map.Entry<Integer, Integer>>() {
-            public int compare(Map.Entry<Integer, Integer> arg0, Map.Entry<Integer, Integer> arg1) {
-                return arg1.getValue().compareTo(arg0.getValue());
-            }
-        });
-        int[] arrayresult = new int[list.size()];
-        int i = 0;
-        for (Map.Entry<Integer, Integer> entry : list) {
-            arrayresult[i] = entry.getKey();
-            i++;
-        }
-        return arrayresult;
     }
 
     //先获得数组中每个元素出现的次数，然后再进行计算出现次数大于1的和出现次数等于1的
