@@ -33,13 +33,14 @@ public class Poker {
             } else if (blackHand.getIndex() == 7) { //对子
                 winResult = compareOnePair(blackHand, whiteHand);
             } else { //散牌
-                winResult = compareHighCard(blackHand, whiteHand, winResult);
+                winResult = compareHighCard(blackHand, whiteHand);
             }
         }
         return winResult;
     }
 
-    private String compareHighCard(final Hand blackHand, final Hand whiteHand, String winResult) {
+    private String compareHighCard(final Hand blackHand, final Hand whiteHand) {
+        String winResult = "";
         for (int i = 0; i < 5; i++) {
             if (blackHand.getNumbers()[i] < whiteHand.getNumbers()[i]) {
                 String sig = intNumber(whiteHand.getNumbers()[i]);
