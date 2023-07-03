@@ -14,7 +14,7 @@ import java.util.Map.Entry;
 public class Hand {
     static final String[] CARD_TYPES = new String[]{"StraightFlush", "FourOfAKind", "FullHouse", "Flush", "Straight", "ThreeOfAKind", "TwoPair", "OnePair", "HighCard"};
     private String type;
-    private String numbers;
+    private int[] numbers;
     private int index;
     private int[] arraySort;
     private int[] repeat;
@@ -202,7 +202,7 @@ public class Hand {
         return type;
     }
 
-    public String getNumbers() {
+    public int[] getNumbers() {
         return numbers;
     }
 
