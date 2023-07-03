@@ -8,121 +8,110 @@ public class Poker {
 
     public String compareResult(String black, String white) {
         final Hand blackHand = new Hand(black);
-        int[] blackNumber = blackHand.getNumbers();
-        int blackIndex = blackHand.getIndex();
-        int[] blackArraySort = blackHand.getArraySort();
-        int[] blackRepeat = blackHand.getRepeat();
-        int[] blackNoRepeat = blackHand.getNoRepeat();
-
         final Hand whiteHand = new Hand(white);
-        int[] whiteNumber = whiteHand.getNumbers();
-        int whiteIndex = whiteHand.getIndex();
-        int[] whiteArraySort = whiteHand.getArraySort();
-        int[] whiteRepeat = whiteHand.getRepeat();
-        int[] whiteNoRepeat = whiteHand.getNoRepeat();
 
         String winResult = "";
-        if (blackIndex < whiteIndex) {
-            winResult = "black wins - " + Hand.CARD_TYPES[blackIndex];
-        } else if (blackIndex > whiteIndex) {
-            winResult = "white wins - " + Hand.CARD_TYPES[whiteIndex];
+        if (blackHand.getIndex() < whiteHand.getIndex()) {
+            winResult = "black wins - " + Hand.CARD_TYPES[blackHand.getIndex()];
+        } else if (blackHand.getIndex() > whiteHand.getIndex()) {
+            winResult = "white wins - " + Hand.CARD_TYPES[whiteHand.getIndex()];
         } else {
-            if (blackIndex == 0) { //同花顺
-                if (blackNumber[0] < whiteNumber[0]) {
-                    String sig = intNumber(whiteNumber[0]);
+            if (blackHand.getIndex() == 0) { //同花顺
+                if (blackHand.getNumbers()[0] < whiteHand.getNumbers()[0]) {
+                    String sig = intNumber(whiteHand.getNumbers()[0]);
                     winResult = WHITE_WINS_HINTS + sig;
-                } else if (blackNumber[0] > whiteNumber[0]) {
-                    String sig = intNumber(blackNumber[0]);
+                } else if (blackHand.getNumbers()[0] > whiteHand.getNumbers()[0]) {
+                    String sig = intNumber(blackHand.getNumbers()[0]);
                     winResult = BLACK_WINS_HINTS + sig;
                 } else {
                     winResult = "tie";
                 }
-            } else if (blackIndex == 1) { //铁支
-                if (blackArraySort[0] < whiteArraySort[0]) {
-                    String sig = intNumber(whiteArraySort[0]);
+            } else if (blackHand.getIndex() == 1) { //铁支
+                if (blackHand.getArraySort()[0] < whiteHand.getArraySort()[0]) {
+                    String sig = intNumber(whiteHand.getArraySort()[0]);
                     winResult = WHITE_WINS_HINTS + sig;
                 } else {
-                    String sig = intNumber(blackArraySort[0]);
+                    String sig = intNumber(blackHand.getArraySort()[0]);
                     winResult = BLACK_WINS_HINTS + sig;
                 }
-            } else if (blackIndex == 2) { //葫芦
-                if (blackArraySort[0] < whiteArraySort[0]) {
-                    String sig = intNumber(whiteArraySort[0]);
+            } else if (blackHand.getIndex() == 2) { //葫芦
+                if (blackHand.getArraySort()[0] < whiteHand.getArraySort()[0]) {
+                    String sig = intNumber(whiteHand.getArraySort()[0]);
                     winResult = WHITE_WINS_HINTS + sig;
                 } else {
-                    String sig = intNumber(blackArraySort[0]);
+                    String sig = intNumber(blackHand.getArraySort()[0]);
                     winResult = BLACK_WINS_HINTS + sig;
                 }
-            } else if (blackIndex == 3) { //同花
+            } else if (blackHand.getIndex() == 3) { //同花
                 for (int i = 0; i < 5; i++) {
-                    if (blackNumber[i] < whiteNumber[i]) {
-                        String sig = intNumber(whiteNumber[i]);
+                    if (blackHand.getNumbers()[i] < whiteHand.getNumbers()[i]) {
+                        String sig = intNumber(whiteHand.getNumbers()[i]);
                         winResult = WHITE_WINS_HINTS + sig;
                         break;
-                    } else if (blackNumber[i] > whiteNumber[i]) {
-                        String sig = intNumber(blackNumber[i]);
+                    } else if (blackHand.getNumbers()[i] > whiteHand.getNumbers()[i]) {
+                        String sig = intNumber(blackHand.getNumbers()[i]);
                         winResult = BLACK_WINS_HINTS + sig;
                         break;
                     } else {
                         winResult = "tie";
                     }
                 }
-            } else if (blackIndex == 4) { //顺子
-                if (blackNumber[0] < whiteNumber[0]) {
-                    String sig = intNumber(whiteNumber[0]);
+            } else if (blackHand.getIndex() == 4) { //顺子
+                if (blackHand.getNumbers()[0] < whiteHand.getNumbers()[0]) {
+                    String sig = intNumber(whiteHand.getNumbers()[0]);
                     winResult = WHITE_WINS_HINTS + sig;
-                } else if (blackNumber[0] > whiteNumber[0]) {
-                    String sig = intNumber(blackNumber[0]);
+                } else if (blackHand.getNumbers()[0] > whiteHand.getNumbers()[0]) {
+                    String sig = intNumber(blackHand.getNumbers()[0]);
                     winResult = BLACK_WINS_HINTS + sig;
                 } else {
                     winResult = "tie";
                 }
-            } else if (blackIndex == 5) { //三条
-                if (blackRepeat[0] < whiteRepeat[0]) {
-                    String sig = intNumber(whiteRepeat[0]);
+            } else if (blackHand.getIndex() == 5) { //三条
+                if (blackHand.getRepeat()[0] < whiteHand.getRepeat()[0]) {
+                    String sig = intNumber(whiteHand.getRepeat()[0]);
                     winResult = WHITE_WINS_HINTS + sig;
                 } else {
-                    String sig = intNumber(blackRepeat[0]);
+                    String sig = intNumber(blackHand.getRepeat()[0]);
                     winResult = BLACK_WINS_HINTS + sig;
                 }
-            } else if (blackIndex == 6) { //两对
+            } else if (blackHand.getIndex() == 6) { //两对
                 for (int i = 0; i < 2; i++) {
-                    if (blackRepeat[i] < whiteRepeat[i]) {
-                        String sig = intNumber(whiteRepeat[i]);
+                    if (blackHand.getRepeat()[i] < whiteHand.getRepeat()[i]) {
+                        String sig = intNumber(whiteHand.getRepeat()[i]);
                         winResult = WHITE_WINS_HINTS + sig;
                         break;
-                    } else if (blackRepeat[i] > whiteRepeat[i]) {
-                        String sig = intNumber(blackRepeat[i]);
+                    } else if (blackHand.getRepeat()[i] > whiteHand.getRepeat()[i]) {
+                        String sig = intNumber(blackHand.getRepeat()[i]);
                         winResult = BLACK_WINS_HINTS + sig;
                         break;
                     }
                 }
                 if (winResult == "") {
-                    if (blackNoRepeat[0] < whiteNoRepeat[0]) {
-                        String sig = intNumber(whiteNoRepeat[0]);
+                    if (blackHand.getNoRepeat()[0] < whiteHand.getNoRepeat()[0]) {
+                        String sig = intNumber(whiteHand.getNoRepeat()[0]);
                         winResult = WHITE_WINS_HINTS + sig;
-                    } else if (blackNoRepeat[0] > whiteNoRepeat[0]) {
-                        String sig = intNumber(blackNoRepeat[0]);
+                    } else if (blackHand.getNoRepeat()[0] > whiteHand.getNoRepeat()[0]) {
+                        String sig = intNumber(blackHand.getNoRepeat()[0]);
                         winResult = BLACK_WINS_HINTS + sig;
                     } else {
                         winResult = "tie";
                     }
                 }
-            } else if (blackIndex == 7) { //对子
-                if (blackRepeat[0] < whiteRepeat[0]) {
-                    String sig = intNumber(whiteRepeat[0]);
+            } else if (blackHand.getIndex() == 7) { //对子
+                if (blackHand.getRepeat()[0] < whiteHand.getRepeat()[0]) {
+                    String sig = intNumber(whiteHand.getRepeat()[0]);
                     winResult = WHITE_WINS_HINTS + sig;
-                } else if (blackRepeat[0] > whiteRepeat[0]) {
-                    String sig = intNumber(blackRepeat[0]);
+                } else if (blackHand.getRepeat()[0] > whiteHand.getRepeat()[0]) {
+                    String sig = intNumber(blackHand.getRepeat()[0]);
                     winResult = BLACK_WINS_HINTS + sig;
                 } else {
                     for (int i = 0; i < 3; i++) {
-                        if (blackNoRepeat[i] < whiteNoRepeat[i]) {
-                            String sig = intNumber(whiteNoRepeat[i]);
+                        if (blackHand.getNoRepeat()[i] < whiteHand.getNoRepeat()[i]) {
+                            String sig = intNumber(whiteHand.getNoRepeat()[i]);
                             winResult = WHITE_WINS_HINTS + sig;
                             break;
-                        } else if (blackNoRepeat[i] > whiteNoRepeat[i]) {
-                            String sig = intNumber(blackNoRepeat[i]);
+                        } else if (blackHand.getNoRepeat()[i] > whiteHand.getNoRepeat()[i]) {
+                            String sig = intNumber(blackHand.getNoRepeat()[i]);
                             winResult = BLACK_WINS_HINTS + sig;
                             break;
                         } else {
@@ -132,12 +121,12 @@ public class Poker {
                 }
             } else { //散牌
                 for (int i = 0; i < 5; i++) {
-                    if (blackNumber[i] < whiteNumber[i]) {
-                        String sig = intNumber(whiteNumber[i]);
+                    if (blackHand.getNumbers()[i] < whiteHand.getNumbers()[i]) {
+                        String sig = intNumber(whiteHand.getNumbers()[i]);
                         winResult = WHITE_WINS_HINTS + sig;
                         break;
-                    } else if (blackNumber[i] > whiteNumber[i]) {
-                        String sig = intNumber(blackNumber[i]);
+                    } else if (blackHand.getNumbers()[i] > whiteHand.getNumbers()[i]) {
+                        String sig = intNumber(blackHand.getNumbers()[i]);
                         winResult = BLACK_WINS_HINTS + sig;
                         break;
                     } else {
