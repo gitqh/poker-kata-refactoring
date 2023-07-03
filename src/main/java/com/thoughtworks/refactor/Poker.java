@@ -43,7 +43,8 @@ public class Poker {
             poker = new StraightPoker();
             winResult = poker.compare(blackHand, whiteHand);
         } else if (blackHand.getIndex() == 5) { //三条
-            winResult = compareThreeOfAKind(blackHand, whiteHand);
+            poker = new ThreeOfAKindPoker();
+            winResult = poker.compare(blackHand, whiteHand);
         } else if (blackHand.getIndex() == 6) { //两对
             winResult = compareTwoPair(blackHand, whiteHand);
         } else if (blackHand.getIndex() == 7) { //对子
