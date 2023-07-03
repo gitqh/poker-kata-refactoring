@@ -52,7 +52,8 @@ public class Poker {
             poker = new OnePairPoker();
             winResult = poker.compare(blackHand, whiteHand);
         } else { //散牌
-            winResult = compareHighCard(blackHand, whiteHand);
+            poker = new HighCardPoker();
+            winResult = poker.compare(blackHand, whiteHand);
         }
         return winResult;
     }
