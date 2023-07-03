@@ -16,25 +16,31 @@ public class Poker {
         } else if (blackHand.getIndex() > whiteHand.getIndex()) {
             winResult = "white wins - " + Hand.CARD_TYPES[whiteHand.getIndex()];
         } else {
-            if (blackHand.getIndex() == 0) { //同花顺
-                winResult = compareStraightFlush(blackHand, whiteHand);
-            } else if (blackHand.getIndex() == 1) { //铁支
-                winResult = compareFourOfAKind(blackHand, whiteHand);
-            } else if (blackHand.getIndex() == 2) { //葫芦
-                winResult = compareFullHouse(blackHand, whiteHand);
-            } else if (blackHand.getIndex() == 3) { //同花
-                winResult = compareFlush(blackHand, whiteHand);
-            } else if (blackHand.getIndex() == 4) { //顺子
-                winResult = compareStraight(blackHand, whiteHand);
-            } else if (blackHand.getIndex() == 5) { //三条
-                winResult = compareThreeOfAKind(blackHand, whiteHand);
-            } else if (blackHand.getIndex() == 6) { //两对
-                winResult = compareTwoPair(blackHand, whiteHand);
-            } else if (blackHand.getIndex() == 7) { //对子
-                winResult = compareOnePair(blackHand, whiteHand);
-            } else { //散牌
-                winResult = compareHighCard(blackHand, whiteHand);
-            }
+            winResult = compareWithSameCardType(blackHand, whiteHand);
+        }
+        return winResult;
+    }
+
+    private String compareWithSameCardType(final Hand blackHand, final Hand whiteHand) {
+        String winResult;
+        if (blackHand.getIndex() == 0) { //同花顺
+            winResult = compareStraightFlush(blackHand, whiteHand);
+        } else if (blackHand.getIndex() == 1) { //铁支
+            winResult = compareFourOfAKind(blackHand, whiteHand);
+        } else if (blackHand.getIndex() == 2) { //葫芦
+            winResult = compareFullHouse(blackHand, whiteHand);
+        } else if (blackHand.getIndex() == 3) { //同花
+            winResult = compareFlush(blackHand, whiteHand);
+        } else if (blackHand.getIndex() == 4) { //顺子
+            winResult = compareStraight(blackHand, whiteHand);
+        } else if (blackHand.getIndex() == 5) { //三条
+            winResult = compareThreeOfAKind(blackHand, whiteHand);
+        } else if (blackHand.getIndex() == 6) { //两对
+            winResult = compareTwoPair(blackHand, whiteHand);
+        } else if (blackHand.getIndex() == 7) { //对子
+            winResult = compareOnePair(blackHand, whiteHand);
+        } else { //散牌
+            winResult = compareHighCard(blackHand, whiteHand);
         }
         return winResult;
     }
