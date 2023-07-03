@@ -126,18 +126,6 @@ public class Poker {
         return winResult;
     }
 
-    private String compareThreeOfAKind(final Hand blackHand, final Hand whiteHand) {
-        String winResult;
-        if (blackHand.getRepeat()[0] < whiteHand.getRepeat()[0]) {
-            String sig = intNumber(whiteHand.getRepeat()[0]);
-            winResult = WHITE_WINS_HINTS + sig;
-        } else {
-            String sig = intNumber(blackHand.getRepeat()[0]);
-            winResult = BLACK_WINS_HINTS + sig;
-        }
-        return winResult;
-    }
-
     protected String intNumber(int i) {
         String[] strNumber = {"2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"};
         return strNumber[i - 2];
