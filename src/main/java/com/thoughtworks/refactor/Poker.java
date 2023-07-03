@@ -23,7 +23,7 @@ public class Poker {
             } else if (blackHand.getIndex() == 2) { //葫芦
                 winResult = compareFullHouse(blackHand, whiteHand);
             } else if (blackHand.getIndex() == 3) { //同花
-                winResult = compareFlush(blackHand, whiteHand, winResult);
+                winResult = compareFlush(blackHand, whiteHand);
             } else if (blackHand.getIndex() == 4) { //顺子
                 winResult = compareStraight(blackHand, whiteHand);
             } else if (blackHand.getIndex() == 5) { //三条
@@ -134,7 +134,8 @@ public class Poker {
         return winResult;
     }
 
-    private String compareFlush(final Hand blackHand, final Hand whiteHand, String winResult) {
+    private String compareFlush(final Hand blackHand, final Hand whiteHand) {
+        String winResult = "";
         for (int i = 0; i < 5; i++) {
             if (blackHand.getNumbers()[i] < whiteHand.getNumbers()[i]) {
                 String sig = intNumber(whiteHand.getNumbers()[i]);
