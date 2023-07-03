@@ -40,7 +40,8 @@ public class Poker {
             poker = new FlushPoker();
             winResult = poker.compare(blackHand, whiteHand);
         } else if (blackHand.getIndex() == 4) { //顺子
-            winResult = compareStraight(blackHand, whiteHand);
+            poker = new StraightPoker();
+            winResult = poker.compare(blackHand, whiteHand);
         } else if (blackHand.getIndex() == 5) { //三条
             winResult = compareThreeOfAKind(blackHand, whiteHand);
         } else if (blackHand.getIndex() == 6) { //两对
