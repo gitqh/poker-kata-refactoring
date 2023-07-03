@@ -21,6 +21,9 @@ public class Poker {
         return winResult;
     }
 
+    protected String compare(final Hand blackHand, final Hand whiteHand) {
+        return null;
+    }
     private String compareWithSameCardType(final Hand blackHand, final Hand whiteHand) {
         String winResult;
         if (blackHand.getIndex() == 0) { //同花顺
