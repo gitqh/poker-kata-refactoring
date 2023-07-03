@@ -10,12 +10,12 @@ public class Poker {
         int[] blackRepeat = blackHand.getRepeat();
         int[] blackNoRepeat = blackHand.getNoRepeat();
 
-        String whiteType = Hand.judgeType(white);
-        int[] whiteNumber = Hand.strNumber(white);
-        int whiteIndex = Hand.judgeIndex(whiteType);
-        int[] whiteArraySort = Hand.arraySort(whiteNumber);
-        int[] whiteRepeat = Hand.noOrRepeatNumber(whiteNumber, 0);
-        int[] whiteNoRepeat = Hand.noOrRepeatNumber(whiteNumber, 1);
+        final Hand whiteHand = new Hand(white);
+        int[] whiteNumber = whiteHand.getNumbers();
+        int whiteIndex = whiteHand.getIndex();
+        int[] whiteArraySort = whiteHand.getArraySort();
+        int[] whiteRepeat = whiteHand.getRepeat();
+        int[] whiteNoRepeat = whiteHand.getNoRepeat();
 
         String winResult = "";
         if (blackIndex < whiteIndex) {
