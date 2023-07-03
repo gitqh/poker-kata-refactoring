@@ -27,13 +27,7 @@ public class Poker {
             } else if (blackHand.getIndex() == 4) { //顺子
                 winResult = compareStraight(blackHand, whiteHand);
             } else if (blackHand.getIndex() == 5) { //三条
-                if (blackHand.getRepeat()[0] < whiteHand.getRepeat()[0]) {
-                    String sig = intNumber(whiteHand.getRepeat()[0]);
-                    winResult = WHITE_WINS_HINTS + sig;
-                } else {
-                    String sig = intNumber(blackHand.getRepeat()[0]);
-                    winResult = BLACK_WINS_HINTS + sig;
-                }
+                winResult = compareThreeOfAKind(blackHand, whiteHand);
             } else if (blackHand.getIndex() == 6) { //两对
                 for (int i = 0; i < 2; i++) {
                     if (blackHand.getRepeat()[i] < whiteHand.getRepeat()[i]) {
@@ -94,6 +88,18 @@ public class Poker {
                     }
                 }
             }
+        }
+        return winResult;
+    }
+
+    private String compareThreeOfAKind(final Hand blackHand, final Hand whiteHand) {
+        String winResult;
+        if (blackHand.getRepeat()[0] < whiteHand.getRepeat()[0]) {
+            String sig = intNumber(whiteHand.getRepeat()[0]);
+            winResult = WHITE_WINS_HINTS + sig;
+        } else {
+            String sig = intNumber(blackHand.getRepeat()[0]);
+            winResult = BLACK_WINS_HINTS + sig;
         }
         return winResult;
     }
