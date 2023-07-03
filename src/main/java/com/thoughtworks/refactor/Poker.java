@@ -37,7 +37,8 @@ public class Poker {
             poker = new FullHousePoker();
             winResult = poker.compare(blackHand, whiteHand);
         } else if (blackHand.getIndex() == 3) { //同花
-            winResult = compareFlush(blackHand, whiteHand);
+            poker = new FlushPoker();
+            winResult = poker.compare(blackHand, whiteHand);
         } else if (blackHand.getIndex() == 4) { //顺子
             winResult = compareStraight(blackHand, whiteHand);
         } else if (blackHand.getIndex() == 5) { //三条
