@@ -7,19 +7,21 @@ public class Poker {
     private static final String[] CARD_TYPES = new String[]{"StraightFlush", "FourOfAKind", "FullHouse", "Flush", "Straight", "ThreeOfAKind", "TwoPair", "OnePair", "HighCard"};
 
     public String compareResult(String black, String white) {
-        String winResult = "";
         String blackType = judgeType(black);
-        String whiteType = judgeType(white);
         int[] blackNumber = strNumber(black);
-        int[] whiteNumber = strNumber(white);
         int blackIndex = judgeIndex(blackType);
-        int whiteIndex = judgeIndex(whiteType);
         int[] blackArraySort = arraySort(blackNumber);
-        int[] whiteArraySort = arraySort(whiteNumber);
         int[] blackRepeat = noOrRepeatNumber(blackNumber, 0);
-        int[] whiteRepeat = noOrRepeatNumber(whiteNumber, 0);
         int[] blackNoRepeat = noOrRepeatNumber(blackNumber, 1);
+
+        String whiteType = judgeType(white);
+        int[] whiteNumber = strNumber(white);
+        int whiteIndex = judgeIndex(whiteType);
+        int[] whiteArraySort = arraySort(whiteNumber);
+        int[] whiteRepeat = noOrRepeatNumber(whiteNumber, 0);
         int[] whiteNoRepeat = noOrRepeatNumber(whiteNumber, 1);
+
+        String winResult = "";
         if (blackIndex < whiteIndex) {
             winResult = "black wins - " + CARD_TYPES[blackIndex];
         } else if (blackIndex > whiteIndex) {
