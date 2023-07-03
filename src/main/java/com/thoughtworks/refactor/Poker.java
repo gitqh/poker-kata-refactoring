@@ -31,7 +31,7 @@ public class Poker {
             } else if (blackHand.getIndex() == 6) { //两对
                 winResult = compareTwoPair(blackHand, whiteHand);
             } else if (blackHand.getIndex() == 7) { //对子
-                winResult = compareOnePair(blackHand, whiteHand, winResult);
+                winResult = compareOnePair(blackHand, whiteHand);
             } else { //散牌
                 winResult = compareHighCard(blackHand, whiteHand, winResult);
             }
@@ -56,7 +56,8 @@ public class Poker {
         return winResult;
     }
 
-    private String compareOnePair(final Hand blackHand, final Hand whiteHand, String winResult) {
+    private String compareOnePair(final Hand blackHand, final Hand whiteHand) {
+        String winResult = "";
         if (blackHand.getRepeat()[0] < whiteHand.getRepeat()[0]) {
             String sig = intNumber(whiteHand.getRepeat()[0]);
             winResult = WHITE_WINS_HINTS + sig;
