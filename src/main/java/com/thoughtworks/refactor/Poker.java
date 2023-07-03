@@ -2,9 +2,9 @@ package com.thoughtworks.refactor;
 
 public class Poker {
 
-    private static final String WINS_HINTS = " wins - high card:";
-    private static final String WHITE_WINS_HINTS = "white" + WINS_HINTS;
-    private static final String BLACK_WINS_HINTS = "black" + WINS_HINTS;
+    protected static final String WINS_HINTS = " wins - high card:";
+    protected static final String WHITE_WINS_HINTS = "white" + WINS_HINTS;
+    protected static final String BLACK_WINS_HINTS = "black" + WINS_HINTS;
 
     public String compareResult(String black, String white) {
         final Hand blackHand = new Hand(black);
@@ -201,7 +201,7 @@ public class Poker {
         return winResult;
     }
 
-    private String intNumber(int i) {
+    protected String intNumber(int i) {
         String[] strNumber = {"2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"};
         return strNumber[i - 2];
     }
