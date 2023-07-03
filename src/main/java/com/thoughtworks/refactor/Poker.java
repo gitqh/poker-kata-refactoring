@@ -8,14 +8,14 @@ public class Poker {
 
     public String compareResult(String black, String white) {
         String blackType = judgeType(black);
-        int[] blackNumber = strNumber(black);
+        int[] blackNumber = Hand.strNumber(black);
         int blackIndex = judgeIndex(blackType);
         int[] blackArraySort = arraySort(blackNumber);
         int[] blackRepeat = noOrRepeatNumber(blackNumber, 0);
         int[] blackNoRepeat = noOrRepeatNumber(blackNumber, 1);
 
         String whiteType = judgeType(white);
-        int[] whiteNumber = strNumber(white);
+        int[] whiteNumber = Hand.strNumber(white);
         int whiteIndex = judgeIndex(whiteType);
         int[] whiteArraySort = arraySort(whiteNumber);
         int[] whiteRepeat = noOrRepeatNumber(whiteNumber, 0);
@@ -253,7 +253,7 @@ public class Poker {
     private String judgeType(String str) {
         String type = "";
         String[] strArray = str.split("");
-        int[] number = strNumber(str);
+        int[] number = Hand.strNumber(str);
         int i;
         String[] color = new String[5];
         for (i = 0; i < 5; i++) {
@@ -295,40 +295,4 @@ public class Poker {
         return type;
     }
 
-    //数字转化并将其从大到小排序
-    private int[] strNumber(String str) {
-        int[] number = new int[5];
-        String[] strArray = str.split("");
-        int i;
-        for (i = 0; i < 5; i++) {
-            String c = strArray[i * 3];
-            switch (c) {
-                case "T":
-                    number[i] = 10;
-                    break;
-                case "J":
-                    number[i] = 11;
-                    break;
-                case "Q":
-                    number[i] = 12;
-                    break;
-                case "K":
-                    number[i] = 13;
-                    break;
-                case "A":
-                    number[i] = 14;
-                    break;
-                default:
-                    number[i] = Integer.valueOf(c);
-                    break;
-            }
-        }
-
-        Arrays.sort(number);
-        int[] renumber = new int[number.length];
-        for (i = 0; i < number.length; i++) {
-            renumber[i] = number[number.length - i - 1];
-        }
-        return renumber;
-    }
 }
