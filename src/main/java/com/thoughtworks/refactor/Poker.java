@@ -34,7 +34,8 @@ public class Poker {
             poker = new FourOfAKindPoker();
             winResult = poker.compare(blackHand, whiteHand);
         } else if (blackHand.getIndex() == 2) { //葫芦
-            winResult = compareFullHouse(blackHand, whiteHand);
+            poker = new FullHousePoker();
+            winResult = poker.compare(blackHand, whiteHand);
         } else if (blackHand.getIndex() == 3) { //同花
             winResult = compareFlush(blackHand, whiteHand);
         } else if (blackHand.getIndex() == 4) { //顺子
