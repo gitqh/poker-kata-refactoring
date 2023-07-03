@@ -4,7 +4,6 @@ public class Poker {
 
     public String compareResult(String black, String white) {
         final Hand blackHand = new Hand(black);
-        String blackType = blackHand.getType();
         int[] blackNumber = blackHand.getNumbers();
         int blackIndex = blackHand.getIndex();
         int[] blackArraySort = blackHand.getArraySort();
