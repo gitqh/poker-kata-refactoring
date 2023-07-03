@@ -207,10 +207,6 @@ public class Hand {
         this.noRepeat = noOrRepeatNumber(numbers, 1);
     }
 
-    public String getType() {
-        return type;
-    }
-
     public int[] getNumbers() {
         return numbers;
     }
