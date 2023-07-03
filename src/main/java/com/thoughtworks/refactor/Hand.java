@@ -103,7 +103,7 @@ public class Hand {
         return type;
     }
 
-    static int judgeIndex(String strType) {
+    int judgeIndex(String strType) {
         int index = -1;
         for (int i = 0; i < 9; i++) {
             if (CARD_TYPES[i].equals(strType)) {
