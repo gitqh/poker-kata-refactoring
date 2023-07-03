@@ -150,24 +150,6 @@ public class Poker {
         return winResult;
     }
 
-    private String compareFlush(final Hand blackHand, final Hand whiteHand) {
-        String winResult = "";
-        for (int i = 0; i < 5; i++) {
-            if (blackHand.getNumbers()[i] < whiteHand.getNumbers()[i]) {
-                String sig = intNumber(whiteHand.getNumbers()[i]);
-                winResult = WHITE_WINS_HINTS + sig;
-                break;
-            } else if (blackHand.getNumbers()[i] > whiteHand.getNumbers()[i]) {
-                String sig = intNumber(blackHand.getNumbers()[i]);
-                winResult = BLACK_WINS_HINTS + sig;
-                break;
-            } else {
-                winResult = "tie";
-            }
-        }
-        return winResult;
-    }
-
     protected String intNumber(int i) {
         String[] strNumber = {"2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"};
         return strNumber[i - 2];
