@@ -21,13 +21,7 @@ public class Poker {
             } else if (blackHand.getIndex() == 1) { //铁支
                 winResult = compareFourOfAKind(blackHand, whiteHand);
             } else if (blackHand.getIndex() == 2) { //葫芦
-                if (blackHand.getArraySort()[0] < whiteHand.getArraySort()[0]) {
-                    String sig = intNumber(whiteHand.getArraySort()[0]);
-                    winResult = WHITE_WINS_HINTS + sig;
-                } else {
-                    String sig = intNumber(blackHand.getArraySort()[0]);
-                    winResult = BLACK_WINS_HINTS + sig;
-                }
+                winResult = compareFullHouse(blackHand, whiteHand);
             } else if (blackHand.getIndex() == 3) { //同花
                 for (int i = 0; i < 5; i++) {
                     if (blackHand.getNumbers()[i] < whiteHand.getNumbers()[i]) {
@@ -120,6 +114,18 @@ public class Poker {
                     }
                 }
             }
+        }
+        return winResult;
+    }
+
+    private String compareFullHouse(final Hand blackHand, final Hand whiteHand) {
+        String winResult;
+        if (blackHand.getArraySort()[0] < whiteHand.getArraySort()[0]) {
+            String sig = intNumber(whiteHand.getArraySort()[0]);
+            winResult = WHITE_WINS_HINTS + sig;
+        } else {
+            String sig = intNumber(blackHand.getArraySort()[0]);
+            winResult = BLACK_WINS_HINTS + sig;
         }
         return winResult;
     }
