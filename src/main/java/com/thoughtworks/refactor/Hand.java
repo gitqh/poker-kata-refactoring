@@ -21,7 +21,7 @@ public class Hand {
     private int[] noRepeat;
 
     //数字转化并将其从大到小排序
-    static int[] strNumber(String str) {
+    int[] strNumber(String str) {
         int[] number = new int[5];
         String[] strArray = str.split("");
         int i;
@@ -58,7 +58,7 @@ public class Hand {
     }
 
     //判断是什么牌
-    static String judgeType(String str) {
+    String judgeType(String str) {
         String type = "";
         String[] strArray = str.split("");
         int[] number = strNumber(str);
