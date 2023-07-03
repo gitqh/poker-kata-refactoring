@@ -23,19 +23,7 @@ public class Poker {
             } else if (blackHand.getIndex() == 2) { //葫芦
                 winResult = compareFullHouse(blackHand, whiteHand);
             } else if (blackHand.getIndex() == 3) { //同花
-                for (int i = 0; i < 5; i++) {
-                    if (blackHand.getNumbers()[i] < whiteHand.getNumbers()[i]) {
-                        String sig = intNumber(whiteHand.getNumbers()[i]);
-                        winResult = WHITE_WINS_HINTS + sig;
-                        break;
-                    } else if (blackHand.getNumbers()[i] > whiteHand.getNumbers()[i]) {
-                        String sig = intNumber(blackHand.getNumbers()[i]);
-                        winResult = BLACK_WINS_HINTS + sig;
-                        break;
-                    } else {
-                        winResult = "tie";
-                    }
-                }
+                winResult = compareFlush(blackHand, whiteHand, winResult);
             } else if (blackHand.getIndex() == 4) { //顺子
                 if (blackHand.getNumbers()[0] < whiteHand.getNumbers()[0]) {
                     String sig = intNumber(whiteHand.getNumbers()[0]);
@@ -113,6 +101,23 @@ public class Poker {
                         winResult = "tie";
                     }
                 }
+            }
+        }
+        return winResult;
+    }
+
+    private String compareFlush(final Hand blackHand, final Hand whiteHand, String winResult) {
+        for (int i = 0; i < 5; i++) {
+            if (blackHand.getNumbers()[i] < whiteHand.getNumbers()[i]) {
+                String sig = intNumber(whiteHand.getNumbers()[i]);
+                winResult = WHITE_WINS_HINTS + sig;
+                break;
+            } else if (blackHand.getNumbers()[i] > whiteHand.getNumbers()[i]) {
+                String sig = intNumber(blackHand.getNumbers()[i]);
+                winResult = BLACK_WINS_HINTS + sig;
+                break;
+            } else {
+                winResult = "tie";
             }
         }
         return winResult;
