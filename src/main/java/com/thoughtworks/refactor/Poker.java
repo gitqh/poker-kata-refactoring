@@ -239,9 +239,8 @@ public class Poker {
 
     private int judgeIndex(String strType) {
         int index = -1;
-        String[] type = {"StraightFlush", "FourOfAKind", "FullHouse", "Flush", "Straight", "ThreeOfAKind", "TwoPair", "OnePair", "HighCard"};
         for (int i = 0; i < 9; i++) {
-            if (type[i].equals(strType)) {
+            if (CARD_TYPES[i].equals(strType)) {
                 index = i;
             }
         }
