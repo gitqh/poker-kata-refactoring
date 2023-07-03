@@ -139,7 +139,7 @@ public class Hand {
     }
 
     //先获得数组中每个元素出现的次数，然后再进行计算出现次数大于1的和出现次数等于1的
-    static int[] noOrRepeatNumber(int[] number, int flag) {
+    int[] noOrRepeatNumber(int[] number, int flag) {
         Map<Integer, Integer> map = new HashMap<Integer, Integer>();
         for (int i = 0; i < number.length; i++) {
             if (map.get(number[i]) != null) {
