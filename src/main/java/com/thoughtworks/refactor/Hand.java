@@ -198,6 +198,15 @@ public class Hand {
         return reResult;
     }
 
+    public Hand(final String input) {
+        this.type = judgeType(input);
+        this.numbers = strNumber(input);
+        this.index = judgeIndex(type);
+        this.arraySort = arraySort(numbers);
+        this.repeat = noOrRepeatNumber(numbers, 0);
+        this.noRepeat = noOrRepeatNumber(numbers, 1);
+    }
+
     public String getType() {
         return type;
     }
