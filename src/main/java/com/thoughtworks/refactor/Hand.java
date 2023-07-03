@@ -113,7 +113,7 @@ public class Hand {
         return index;
     }
 
-    static int[] arraySort(int[] number) {
+    int[] arraySort(int[] number) {
         Map<Integer, Integer> map = new HashMap<Integer, Integer>();
         for (int i = 0; i < number.length; i++) {
             if (map.get(number[i]) != null) {
