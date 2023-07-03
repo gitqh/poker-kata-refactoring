@@ -17,15 +17,7 @@ public class Poker {
             winResult = "white wins - " + Hand.CARD_TYPES[whiteHand.getIndex()];
         } else {
             if (blackHand.getIndex() == 0) { //同花顺
-                if (blackHand.getNumbers()[0] < whiteHand.getNumbers()[0]) {
-                    String sig = intNumber(whiteHand.getNumbers()[0]);
-                    winResult = WHITE_WINS_HINTS + sig;
-                } else if (blackHand.getNumbers()[0] > whiteHand.getNumbers()[0]) {
-                    String sig = intNumber(blackHand.getNumbers()[0]);
-                    winResult = BLACK_WINS_HINTS + sig;
-                } else {
-                    winResult = "tie";
-                }
+                winResult = compareStraightFlush(blackHand, whiteHand);
             } else if (blackHand.getIndex() == 1) { //铁支
                 if (blackHand.getArraySort()[0] < whiteHand.getArraySort()[0]) {
                     String sig = intNumber(whiteHand.getArraySort()[0]);
@@ -134,6 +126,20 @@ public class Poker {
                     }
                 }
             }
+        }
+        return winResult;
+    }
+
+    private String compareStraightFlush(final Hand blackHand, final Hand whiteHand) {
+        String winResult;
+        if (blackHand.getNumbers()[0] < whiteHand.getNumbers()[0]) {
+            String sig = intNumber(whiteHand.getNumbers()[0]);
+            winResult = WHITE_WINS_HINTS + sig;
+        } else if (blackHand.getNumbers()[0] > whiteHand.getNumbers()[0]) {
+            String sig = intNumber(blackHand.getNumbers()[0]);
+            winResult = BLACK_WINS_HINTS + sig;
+        } else {
+            winResult = "tie";
         }
         return winResult;
     }
