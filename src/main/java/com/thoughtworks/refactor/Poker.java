@@ -3,12 +3,13 @@ package com.thoughtworks.refactor;
 public class Poker {
 
     public String compareResult(String black, String white) {
-        String blackType = Hand.judgeType(black);
-        int[] blackNumber = Hand.strNumber(black);
-        int blackIndex = Hand.judgeIndex(blackType);
-        int[] blackArraySort = Hand.arraySort(blackNumber);
-        int[] blackRepeat = Hand.noOrRepeatNumber(blackNumber, 0);
-        int[] blackNoRepeat = Hand.noOrRepeatNumber(blackNumber, 1);
+        final Hand blackHand = new Hand(black);
+        String blackType = blackHand.getType();
+        int[] blackNumber = blackHand.getNumbers();
+        int blackIndex = blackHand.getIndex();
+        int[] blackArraySort = blackHand.getArraySort();
+        int[] blackRepeat = blackHand.getRepeat();
+        int[] blackNoRepeat = blackHand.getNoRepeat();
 
         String whiteType = Hand.judgeType(white);
         int[] whiteNumber = Hand.strNumber(white);
