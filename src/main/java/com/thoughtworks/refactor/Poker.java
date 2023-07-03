@@ -26,8 +26,10 @@ public class Poker {
     }
     private String compareWithSameCardType(final Hand blackHand, final Hand whiteHand) {
         String winResult;
+        Poker poker;
         if (blackHand.getIndex() == 0) { //同花顺
-            winResult = compareStraightFlush(blackHand, whiteHand);
+            poker = new StraightFlushPoker();
+            winResult = poker.compare(blackHand, whiteHand);
         } else if (blackHand.getIndex() == 1) { //铁支
             winResult = compareFourOfAKind(blackHand, whiteHand);
         } else if (blackHand.getIndex() == 2) { //葫芦
