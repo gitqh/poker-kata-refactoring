@@ -49,7 +49,8 @@ public class Poker {
             poker = new TwoPairPoker();
             winResult = poker.compare(blackHand, whiteHand);
         } else if (blackHand.getIndex() == 7) { //对子
-            winResult = compareOnePair(blackHand, whiteHand);
+            poker = new OnePairPoker();
+            winResult = poker.compare(blackHand, whiteHand);
         } else { //散牌
             winResult = compareHighCard(blackHand, whiteHand);
         }
