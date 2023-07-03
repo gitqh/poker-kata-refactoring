@@ -46,7 +46,8 @@ public class Poker {
             poker = new ThreeOfAKindPoker();
             winResult = poker.compare(blackHand, whiteHand);
         } else if (blackHand.getIndex() == 6) { //两对
-            winResult = compareTwoPair(blackHand, whiteHand);
+            poker = new TwoPairPoker();
+            winResult = poker.compare(blackHand, whiteHand);
         } else if (blackHand.getIndex() == 7) { //对子
             winResult = compareOnePair(blackHand, whiteHand);
         } else { //散牌
